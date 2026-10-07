@@ -23,15 +23,6 @@ void Genius::iniciar() {
     botao3.iniciar();
     botao4.iniciar();
 
-    botao1.habilitarCliqueDuplo(false);
-    botao2.habilitarCliqueDuplo(false);
-    botao3.habilitarCliqueDuplo(false);
-    botao4.habilitarCliqueDuplo(false);
-
-    botao1.aoClicar(resposta1);
-    botao2.aoClicar(resposta2);
-    botao3.aoClicar(resposta3);
-    botao4.aoClicar(resposta4);
 
     tamanho = 0;
     posicao = 0;
