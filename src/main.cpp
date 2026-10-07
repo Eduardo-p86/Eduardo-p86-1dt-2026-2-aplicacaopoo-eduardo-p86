@@ -1,18 +1,14 @@
 #include <Arduino.h>
+#include "Genius.h"
 
-// put function declarations here:
-int myFunction(int, int);
+Genius genius;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+    randomSeed(analogRead(0));
+    genius.iniciar();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+    genius.atualizar();
+    genius.jogar();
 }
