@@ -33,7 +33,7 @@ De forma geral, o jogo funciona da seguinte maneira:
 ```text
 1dt-2026-2-aplicacaopoo-eduardo-p86/
 │
-├── lib/
+├── include/
 │   └── Genius.h
 │
 ├── src/
