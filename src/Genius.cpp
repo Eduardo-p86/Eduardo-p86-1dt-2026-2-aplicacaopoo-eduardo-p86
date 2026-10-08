@@ -5,10 +5,6 @@ Genius::Genius()
       botao2(41),
       botao3(40),
       botao4(39) {
-    : botao1(32),
-      botao2(33),
-      botao3(18),
-      botao4(19) {
 }
 
 void Genius::iniciar() {
@@ -26,16 +22,6 @@ void Genius::iniciar() {
     botao2.iniciar();
     botao3.iniciar();
     botao4.iniciar();
-
-    botao1.habilitarCliqueDuplo(false);
-    botao2.habilitarCliqueDuplo(false);
-    botao3.habilitarCliqueDuplo(false);
-    botao4.habilitarCliqueDuplo(false);
-
-    botao1.aoClicar(resposta1);
-    botao2.aoClicar(resposta2);
-    botao3.aoClicar(resposta3);
-    botao4.aoClicar(resposta4);
 
     tamanho = 0;
     posicao = 0;
