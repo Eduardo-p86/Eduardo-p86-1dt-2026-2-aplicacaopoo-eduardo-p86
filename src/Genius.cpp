@@ -1,17 +1,14 @@
 #include "Genius.h"
 
 Genius::Genius()
-<<<<<<< HEAD
     : botao1(42),
       botao2(41),
       botao3(40),
       botao4(39) {
-=======
     : botao1(32),
       botao2(33),
       botao3(18),
       botao4(19) {
->>>>>>> 3c7444718c581236a52102ae8a66bfe8e65c41e0
 }
 
 void Genius::iniciar() {
@@ -30,8 +27,6 @@ void Genius::iniciar() {
     botao3.iniciar();
     botao4.iniciar();
 
-<<<<<<< HEAD
-=======
     botao1.habilitarCliqueDuplo(false);
     botao2.habilitarCliqueDuplo(false);
     botao3.habilitarCliqueDuplo(false);
@@ -41,7 +36,6 @@ void Genius::iniciar() {
     botao2.aoClicar(resposta2);
     botao3.aoClicar(resposta3);
     botao4.aoClicar(resposta4);
->>>>>>> 3c7444718c581236a52102ae8a66bfe8e65c41e0
 
     tamanho = 0;
     posicao = 0;
