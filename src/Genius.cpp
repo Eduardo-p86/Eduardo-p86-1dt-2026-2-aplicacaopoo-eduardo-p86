@@ -1,10 +1,10 @@
 #include "Genius.h"
 
 Genius::Genius()
-    : botao1(42),
-      botao2(41),
-      botao3(40),
-      botao4(39) {
+    : botao1(2),
+      botao2(42),
+      botao3(41),
+      botao4(40) {
 }
 
 void Genius::iniciar() {
@@ -35,6 +35,18 @@ void Genius::atualizar() {
     botao2.atualizar();
     botao3.atualizar();
     botao4.atualizar();
+
+    if (!esperandoResposta)
+        return;
+
+    if (botao1.pressionou())
+        resposta1();
+    if (botao2.pressionou())
+        resposta2();
+    if (botao3.pressionou())
+        resposta3();
+    if (botao4.pressionou())
+        resposta4();
 }
 
 void Genius::jogar() {
@@ -81,9 +93,7 @@ void Genius::resposta(int botao) {
         return;
 
     respostas[posicao] = botao;
-
     acenderLed(botao);
-
     verificarResposta();
 }
 
