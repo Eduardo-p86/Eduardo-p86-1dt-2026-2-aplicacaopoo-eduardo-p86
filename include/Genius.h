@@ -8,10 +8,10 @@ class Genius
 public:
     Genius();
 
-    int led1 = 19;
-    int led2 = 20;
-    int led3 = 48;
-    int led4 = 36;
+    int led1 = 48;
+    int led2 = 36;
+    int led3 = 37;
+    int led4 = 38;
 
     Botao botao1;
     Botao botao2;
