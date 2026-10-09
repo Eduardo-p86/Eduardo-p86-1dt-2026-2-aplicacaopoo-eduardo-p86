@@ -10,61 +10,39 @@ void Botao::iniciar()
     pinMode(pinoBotao, INPUT_PULLUP);
     _estadoAtualBotao = digitalRead(pinoBotao);
     _estadoAnteriorBotao = _estadoAtualBotao;
+    _ultimoMundaca_ms = millis();
+    _presssinou = false;
+    _soltou = false;
 }
 
 void Botao::atualizar()
 {
+    bool leitura = digitalRead(pinoBotao);
     _presssinou = false;
     _soltou = false;
 
-    _estadoAtualBotao = digitalRead(pinoBotao);
-    if (_estadoAtualBotao != _estadoAnteriorBotao)
+    if (leitura != _estadoAnteriorBotao)
     {
         _ultimoMundaca_ms = millis();
-        _estadoAnteriorBotao = _estadoAtualBotao;
-        return;
+        _estadoAnteriorBotao = leitura;
     }
-    if (tempoDecorrido() < _tempoDebounce_ms)
-    {
-        return;
-    }
-    if (_estadoUltimaAcao == _estadoAtualBotao)
-    {
-        return;
-    }
-    _estadoUltimaAcao = _estadoAtualBotao;
 
-    if (estadoAtualBotao == LOW)
+    if ((millis() - _ultimoMundaca_ms) > _tempoDebounce_ms)
     {
-        _presssinou = true;
+        if (leitura != _estadoAtualBotao)
+        {
+            _estadoAtualBotao = leitura;
+
+            if (_estadoAtualBotao == LOW)
+            {
+                _presssinou = true;
+            }
+            else
+            {
+                _soltou = true;
+            }
+        }
     }
-    else
-    {
-        _soltou = true; 
-    }
-    // _presssinou = false;
-    // _soltou = false;
-    // _estadoAtualBotao = digitalRead(pinoBotao);
-    // if (_estadoAtualBotao != _estadoAnteriorBotao)
-    // {
-    //     _ultimoMundaca_ms = millis();
-    // }
-    // else if (tempoDecorrido() - _ultimoMundaca_ms > _tempoDebounce_ms)
-    // {
-    //     if(_estadoUltimaAcao != _estadoAtualBotao)
-    //     {
-    //         _estadoUltimaAcao = _estadoAtualBotao;
-    //         if (_estadoAtualBotao == LOW)
-    //         {
-    //             _presssinou = true;
-    //         }
-    //         else
-    //         {
-    //             _soltou = true;
-    //         }
-    //     }
-    // }
-    // _estadoAnteriorBotao = _estadoAtualBotao;
 }
 
 bool Botao::pressionou()
@@ -79,5 +57,10 @@ bool Botao::soltou()
 
 uint32_t Botao::tempoDecorrido()
 {
-    return millis();
+    return millis() - _ultimoMundaca_ms;
+}
+
+void Botao::setTempoDebounce(int tempoDebounce_ms)
+{
+    _tempoDebounce_ms = tempoDebounce_ms;
 }
