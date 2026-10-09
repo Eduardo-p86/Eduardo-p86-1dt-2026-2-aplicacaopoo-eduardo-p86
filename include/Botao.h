@@ -20,6 +20,7 @@ class Botao
         void atualizar();
         bool pressionou();
         bool soltou();
+        void setTempoDebounce(int tempoDebounce_ms);
 
 
 };
